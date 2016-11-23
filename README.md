@@ -12,9 +12,13 @@ Visit the [Anaconda Installation Site](https://docs.continuum.io/anaconda/instal
 
 ### Running the application
 In the home directory for the application (`USR_DIRS\\gmgm`), use `python manage.py runserver` to start the serverlet and then browse to
+
 >localhost:8000
+
 or 
+
 >127.0.0.1:8000 
+
 to open the application. 
 
 ## Intro
@@ -22,5 +26,5 @@ This application helps Table Top RPG Game Master manage their stories by providi
 
 ### Definitions
 - Story: The game the GM is running, each story lets you assign it a name and specify the source book it is based on. 
-- Mission: Each session/day in the story gets its own mission, this lets you create a flowchart for the story and add Scenes to it
-- Scene: Each combat/interaction scenario. It ightei
+- Mission: Each session/day in the story gets its own mission, this lets you create a flowchart for the story and add Scenes to it.
+- Scene: Each combat/interaction scenario, it allows you to add enemies/NPC characters to the rota and keep track of turns and HP. 
