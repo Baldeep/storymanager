@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>=
 <html>
     <head>
         <!-- jQuery -->
@@ -13,12 +13,15 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+        <!-- Go.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>
+
         <title>Mission</title>
     </head>
 
     <!-- Purple 660DBA
          Darker Purple 58009B -->
-    <body style="padding :40px;">
+    <body style="padding-top:35px; padding-right: 30px; padding-left: 30px">
         <div class="navbar-fixed-top" style="background-color : #58009B; border-color: #000">
             <div id="navigation" class="navbar" 
                 style="background-color: #660DBA; border-color: #660DBA;margin-bottom: 2px">
@@ -36,47 +39,53 @@
 
        
         	<div class="row" style="margin-top:40px">
-                <div class="col-sm-3">
-                <div style="min-height:100%; height: 100%">
-                    <div class="panel panel-default">
+                <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default"> 
                         <div class="panel-heading" style="height:50px">
                             <span style="margin-top:100px">Players List </span>
                             <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
                         </div>
                         <div class="panel-body">
-                            <div class="list-group" style="overflow-y:auto">
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <span class="list-group-item-heading"><strong>Player 1</strong></span>
-                                    <p class="list-group-item-text">Actual Name</p>
+                            <div class="list-group" id="player_list_div" style="overflow-y:auto">
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player1">
+                                    <span class="list-group-item-heading character_name"><strong>Marlock the Magician</strong></span>
+                                    <p class="list-group-item-text player_name">Michael</p>
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <span class="list-group-item-heading"><strong>Player 2</strong></span>
-                                    <p class="list-group-item-text">Actual Name</p>
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player2">
+                                    <span class="list-group-item-heading character_name"><strong>Barbus the Barbarian</strong></span>
+                                    <p class="list-group-item-text player_name">Betty</p>
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <span class="list-group-item-heading"><strong>Player 3</strong></span>
-                                    <p class="list-group-item-text">Actual Name</p>
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player3">
+                                    <span class="list-group-item-heading character_name"><strong>Winfred the Warrior</strong></span>
+                                    <p class="list-group-item-text player_name">Walter</p>
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    <span class="list-group-item-heading"><strong>Player 4</strong></span>
-                                    <p class="list-group-item-text">Actual Name</p>
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player4">
+                                    <span class="list-group-item-heading character_name"><strong>Paul the Paladin</strong></span>
+                                    <p class="list-group-item-text player_name">Paul</p>
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6" style="padding-right: 8px; padding-left: 8px">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Story Flowchart
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Story Flowchart </span>
+                            <button class="btn btn-primary glyphicon glyphicon-floppy-disk pull-right" id="btn-save"></button>
                         </div>
                         <div class="panel-body">
-                            Panel Content
+                            <span style="display: inline-block; vertical-align: top; padding: 5px; width:100px">
+                                <div id="myPaletteDiv" class="panel panel-default" style="height: 470px"></div>
+                            </span>
+
+                            <span style="display: inline-block; vertical-align: top; padding: 5px; width:80%">
+                                <div id="myDiagramDiv" class="panel panel-default" style="height: 470px"></div>
+                            </span>
+    
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Scenes
@@ -97,28 +106,337 @@
                             <h4 class="modal-title">Add a player</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="form form-inline">
-                                <span>Player Name</span>
+                            <div class="form-group">
+                                <div class="row form-inline">
+                                    <div class="col-sm-3">
+                                        <label for="input_character_name">Character Name</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="input_character_name" placeholder="Altair Dawnfoe">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row form-inline">
+                                    <div class="col-sm-3">
+                                        <label for="input_character_name">Player Name</label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="input_player_name" placeholder="Robert Smith">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success">Save</button>
+                            <button type="button" class="btn btn-success" id="modal-add-player-save">Save</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+
+            <textarea class="hidden" id="mySavedModel" style="width:100%;height:300px">
+            { "class": "go.GraphLinksModel",
+                  "linkFromPortIdProperty": "fromPort",
+                  "linkToPortIdProperty": "toPort",
+                  "nodeDataArray": [ 
+                {"key":-1, "category":"Start", "loc":"175 0", "text":"Start"},
+                {"text":"Fork in the\nroad", "key":-2, "loc":"175.3125 66.64999961853027"},
+                {"text":"Left or\nright?", "figure":"Diamond", "key":-3, "loc":"175.3125 165.64999961853027"},
+                {"text":"Bandit \nAmbush", "key":-4, "loc":"59.3125 254.64999961853027"},
+                {"text":"Vicky \nthe Witch", "key":-5, "loc":"315.3125 254.64999961853027"},
+                {"category":"Comment", "text":"just \"Vicky\" if bandits are still alive", "key":-6, "loc":"353.3125 128.64999961853027"},
+                {"text":"Bandits \nDead?", "figure":"Diamond", "key":-7, "loc":"184.3125 328.6499996185303"},
+                {"category":"End", "text":"End", "key":-8, "loc":"184.3125 438.6499996185303"}
+                 ],
+                  "linkDataArray": [ 
+                {"from":-2, "to":-3, "fromPort":"B", "toPort":"T", "points":[175.3125,90.74999961853027,175.3125,100.74999961853027,175.3125,104.34999961853028,175.3125,104.34999961853028,175.3125,107.94999961853028,175.3125,117.94999961853028]},
+                {"from":-3, "to":-4, "fromPort":"L", "toPort":"T", "visible":true, "points":[112.8125,165.64999961853027,102.8125,165.64999961853027,59.3125,165.64999961853027,59.3125,193.09999961853026,59.3125,220.54999961853028,59.3125,230.54999961853028], "text":"Left"},
+                {"from":-3, "to":-5, "fromPort":"R", "toPort":"T", "visible":true, "points":[237.8125,165.64999961853027,247.8125,165.64999961853027,315.3125,165.64999961853027,315.3125,193.09999961853026,315.3125,220.54999961853028,315.3125,230.54999961853028], "text":"Right"},
+                {"from":-4, "to":-5, "fromPort":"R", "toPort":"L", "points":[97.3125,254.64999961853027,107.3125,254.64999961853027,185.59471130371094,254.64999961853027,185.59471130371094,254.64999961853027,263.8769226074219,254.64999961853027,273.8769226074219,254.64999961853027]},
+                {"from":-5, "to":-7, "fromPort":"B", "toPort":"R", "points":[315.3125,278.7499996185303,315.3125,288.7499996185303,315.3125,328.6499996185303,290.0625,328.6499996185303,264.8125,328.6499996185303,254.8125,328.6499996185303]},
+                {"from":-7, "to":-4, "fromPort":"L", "toPort":"L", "visible":true, "points":[113.8125,328.6499996185303,103.8125,328.6499996185303,11.3125,328.6499996185303,11.3125,291.6499996185303,11.3125,254.64999961853027,21.3125,254.64999961853027], "text":"No"},
+                {"from":-7, "to":-8, "fromPort":"B", "toPort":"T", "visible":true, "points":[184.3125,376.3499996185303,184.3125,386.3499996185303,184.3125,397.0755810138792,184.3125,397.0755810138792,184.3125,407.80116240922797,184.3125,417.80116240922797]},
+                {"from":-1, "to":-2, "fromPort":"B", "toPort":"T", "points":[175,25.209302325581397,175,35.2093023255814,175.15625,35.2093023255814,175.15625,32.54999961853027,175.3125,32.54999961853027,175.3125,42.54999961853027]}
+                 ]}
+            </textarea>
     </body>
 
     <script type="text/javascript">
         
         $(document).ready(function(){
 
+
             $(document).on("click", "#btn-add-player", function(){
                 $("#modal-add-player").modal();
             });
 
+            $(document).on("dblclick", ".player_list", function(){
+                var char_name = $(this).children(".character_name").text();
+                console.log("name = " + char_name);
+                var play_name = $(this).children(".player_name").text();
+                console.log("player = " + play_name)
+                $("modal-add-player").modal();
+            });
+
+            $(document).on("click", "#modal-add-player-save", function(){
+                var char_name = $("#input_character_name").text();
+                console.log("name = " + char_name);
+                var play_name = $("input_player_name").text();
+                console.log("player = " + play_name)
+                $("player_list_div").append("<a href='#' class='list-group-item list-group-item-action player_list' id='" +  char_name + "'>" +
+                                            "<span class='list-group-item-heading character_name'><strong>"+ char_name + "'</strong></span>'" +
+                                            "<p class='list-group-item-text player_name'>" + play_name + "</p></a>");
+            });
+
+            initFlowChart();
 
         });
+            /****************************************************************** GO JS CODE *******************************************************************/
+function initFlowChart() {
+    console.log("Flowchart is being initialized");
+
+    if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
+    var $ = go.GraphObject.make;  // for conciseness in defining templates
+
+    myDiagram =
+      $(go.Diagram, "myDiagramDiv",  // must name or refer to the DIV HTML element
+        {
+          initialContentAlignment: go.Spot.Center,
+          allowDrop: true,  // must be true to accept drops from the Palette
+          "LinkDrawn": showLinkLabel,  // this DiagramEvent listener is defined below
+          "LinkRelinked": showLinkLabel,
+          "animationManager.duration": 800, // slightly longer than default (600ms) animation
+          "undoManager.isEnabled": true  // enable undo & redo
+        });
+
+    // when the document is modified, add a "*" to the title and enable the "Save" button
+    myDiagram.addDiagramListener("Modified", function(e) {
+      var button = document.getElementById("SaveButton");
+      if (button) button.disabled = !myDiagram.isModified;
+      var idx = document.title.indexOf("*");
+      if (myDiagram.isModified) {
+        if (idx < 0) document.title += "*";
+      } else {
+        if (idx >= 0) document.title = document.title.substr(0, idx);
+      }
+    });
+
+    // helper definitions for node templates
+
+    function nodeStyle() {
+      return [
+        // The Node.location comes from the "loc" property of the node data,
+        // converted by the Point.parse static method.
+        // If the Node.location is changed, it updates the "loc" property of the node data,
+        // converting back using the Point.stringify static method.
+        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        {
+          // the Node.location is at the center of each node
+          locationSpot: go.Spot.Center,
+          //isShadowed: true,
+          //shadowColor: "#888",
+          // handle mouse enter/leave events to show/hide the ports
+          mouseEnter: function (e, obj) { showPorts(obj.part, true); },
+          mouseLeave: function (e, obj) { showPorts(obj.part, false); }
+        }
+      ];
+    }
+
+    // Define a function for creating a "port" that is normally transparent.
+    // The "name" is used as the GraphObject.portId, the "spot" is used to control how links connect
+    // and where the port is positioned on the node, and the boolean "output" and "input" arguments
+    // control whether the user can draw links from or to the port.
+    function makePort(name, spot, output, input) {
+      // the port is basically just a small circle that has a white stroke when it is made visible
+      return $(go.Shape, "Circle",
+               {
+                  fill: "transparent",
+                  stroke: null,  // this is changed to "white" in the showPorts function
+                  desiredSize: new go.Size(8, 8),
+                  alignment: spot, alignmentFocus: spot,  // align the port on the main Shape
+                  portId: name,  // declare this object to be a "port"
+                  fromSpot: spot, toSpot: spot,  // declare where links may connect at this port
+                  fromLinkable: output, toLinkable: input,  // declare whether the user may draw links to/from here
+                  cursor: "pointer"  // show a different cursor to indicate potential link point
+               });
+    }
+
+    // define the Node templates for regular nodes
+
+    var lightText = 'whitesmoke';
+
+    myDiagram.nodeTemplateMap.add("",  // the default category
+      $(go.Node, "Spot", nodeStyle(),
+        // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
+        $(go.Panel, "Auto",
+          $(go.Shape, "Rectangle",
+            { fill: "#00A9C9", stroke: null },
+            new go.Binding("figure", "figure")),
+          $(go.TextBlock,
+            {
+              font: "bold 11pt Helvetica, Arial, sans-serif",
+              stroke: lightText,
+              margin: 8,
+              maxSize: new go.Size(160, NaN),
+              wrap: go.TextBlock.WrapFit,
+              editable: true
+            },
+            new go.Binding("text").makeTwoWay())
+        ),
+        // four named ports, one on each side:
+        makePort("T", go.Spot.Top, false, true),
+        makePort("L", go.Spot.Left, true, true),
+        makePort("R", go.Spot.Right, true, true),
+        makePort("B", go.Spot.Bottom, true, false)
+      ));
+
+    myDiagram.nodeTemplateMap.add("Start",
+      $(go.Node, "Spot", nodeStyle(),
+        $(go.Panel, "Auto",
+          $(go.Shape, "Circle",
+            { minSize: new go.Size(40, 40), fill: "#79C900", stroke: null }),
+          $(go.TextBlock, "Start",
+            { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
+            new go.Binding("text"))
+        ),
+        // three named ports, one on each side except the top, all output only:
+        makePort("L", go.Spot.Left, true, false),
+        makePort("R", go.Spot.Right, true, false),
+        makePort("B", go.Spot.Bottom, true, false)
+      ));
+
+    myDiagram.nodeTemplateMap.add("End",
+      $(go.Node, "Spot", nodeStyle(),
+        $(go.Panel, "Auto",
+          $(go.Shape, "Circle",
+            { minSize: new go.Size(40, 40), fill: "#DC3C00", stroke: null }),
+          $(go.TextBlock, "End",
+            { font: "bold 11pt Helvetica, Arial, sans-serif", stroke: lightText },
+            new go.Binding("text"))
+        ),
+        // three named ports, one on each side except the bottom, all input only:
+        makePort("T", go.Spot.Top, false, true),
+        makePort("L", go.Spot.Left, false, true),
+        makePort("R", go.Spot.Right, false, true)
+      ));
+
+    myDiagram.nodeTemplateMap.add("Comment",
+      $(go.Node, "Auto", nodeStyle(),
+        $(go.Shape, "File",
+          { fill: "#EFFAB4", stroke: null }),
+        $(go.TextBlock,
+          {
+            margin: 5,
+            maxSize: new go.Size(200, NaN),
+            wrap: go.TextBlock.WrapFit,
+            textAlign: "center",
+            editable: true,
+            font: "bold 12pt Helvetica, Arial, sans-serif",
+            stroke: '#454545'
+          },
+          new go.Binding("text").makeTwoWay())
+        // no ports, because no links are allowed to connect with a comment
+      ));
+
+
+    // replace the default Link template in the linkTemplateMap
+    myDiagram.linkTemplate =
+      $(go.Link,  // the whole link panel
+        {
+          routing: go.Link.AvoidsNodes,
+          curve: go.Link.JumpOver,
+          corner: 5, toShortLength: 4,
+          relinkableFrom: true,
+          relinkableTo: true,
+          reshapable: true,
+          resegmentable: true,
+          // mouse-overs subtly highlight links:
+          mouseEnter: function(e, link) { link.findObject("HIGHLIGHT").stroke = "rgba(30,144,255,0.2)"; },
+          mouseLeave: function(e, link) { link.findObject("HIGHLIGHT").stroke = "transparent"; }
+        },
+        new go.Binding("points").makeTwoWay(),
+        $(go.Shape,  // the highlight shape, normally transparent
+          { isPanelMain: true, strokeWidth: 8, stroke: "transparent", name: "HIGHLIGHT" }),
+        $(go.Shape,  // the link path shape
+          { isPanelMain: true, stroke: "gray", strokeWidth: 2 }),
+        $(go.Shape,  // the arrowhead
+          { toArrow: "standard", stroke: null, fill: "gray"}),
+        $(go.Panel, "Auto",  // the link label, normally not visible
+          { visible: false, name: "LABEL", segmentIndex: 2, segmentFraction: 0.5},
+          new go.Binding("visible", "visible").makeTwoWay(),
+          $(go.Shape, "RoundedRectangle",  // the label shape
+            { fill: "#F8F8F8", stroke: null }),
+          $(go.TextBlock, "Yes",  // the label
+            {
+              textAlign: "center",
+              font: "10pt helvetica, arial, sans-serif",
+              stroke: "#333333",
+              editable: true
+            },
+            new go.Binding("text").makeTwoWay())
+        )
+      );
+
+    // Make link labels visible if coming out of a "conditional" node.
+    // This listener is called by the "LinkDrawn" and "LinkRelinked" DiagramEvents.
+    function showLinkLabel(e) {
+      var label = e.subject.findObject("LABEL");
+      if (label !== null) label.visible = (e.subject.fromNode.data.figure === "Diamond");
+    }
+
+    // temporary links used by LinkingTool and RelinkingTool are also orthogonal:
+    myDiagram.toolManager.linkingTool.temporaryLink.routing = go.Link.Orthogonal;
+    myDiagram.toolManager.relinkingTool.temporaryLink.routing = go.Link.Orthogonal;
+
+    load();  // load an initial diagram from some JSON text
+
+    // initialize the Palette that is on the left side of the page
+    myPalette =
+      $(go.Palette, "myPaletteDiv",  // must name or refer to the DIV HTML element
+        {
+          "animationManager.duration": 800, // slightly longer than default (600ms) animation
+          nodeTemplateMap: myDiagram.nodeTemplateMap,  // share the templates used by myDiagram
+          model: new go.GraphLinksModel([  // specify the contents of the Palette
+            { category: "Start", text: "Start" },
+            { text: "Step" },
+            { text: "???", figure: "Diamond" },
+            { category: "End", text: "End" },
+            { category: "Comment", text: "Comment" }
+          ])
+        });
+
+  }
+
+  // Make all ports on a node visible when the mouse is over the node
+  function showPorts(node, show) {
+    var diagram = node.diagram;
+    if (!diagram || diagram.isReadOnly || !diagram.allowLink) return;
+    node.ports.each(function(port) {
+        port.stroke = (show ? "white" : null);
+      });
+  }
+
+
+  // Show the diagram's model in JSON format that the user may edit
+  function save() {
+    document.getElementById("mySavedModel").value = myDiagram.model.toJson();
+    myDiagram.isModified = false;
+  }
+  function load() {
+    myDiagram.model = go.Model.fromJson(document.getElementById("mySavedModel").value);
+  }
+
+  // add an SVG rendering of the diagram at the end of this page
+  function makeSVG() {
+    var svg = myDiagram.makeSvg({
+        scale: 0.5
+      });
+    svg.style.border = "1px solid black";
+    obj = document.getElementById("SVGArea");
+    obj.appendChild(svg);
+    if (obj.children.length > 0) {
+      obj.replaceChild(svg, obj.children[0]);
+    }
+  }
     </script>
 </html>
