@@ -87,11 +87,25 @@
                 </div>
                 <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Scenes
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Scenes </span>
+                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn_add_scene"></button>
                         </div>
                         <div class="panel-body">
-                            Panel Content
+                            <div class="list-group" id="scene_list_div" style="overflow-y:auto">
+                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                    <span class="list-group-item-heading character_name"><strong>Scene 1</strong></span>
+                                    <p class="list-group-item-text player_name">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque metus.</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                    <span class="list-group-item-heading character_name"><strong>Bandit Scene</strong></span>
+                                    <p class="list-group-item-text player_name">The gang gets attacked by a band of bandits who are harassing a local witch.</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                    <span class="list-group-item-heading character_name"><strong>Vicky The Witch</strong></span>
+                                    <p class="list-group-item-text player_name">Meeting a lovely old lady in the forest.</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
