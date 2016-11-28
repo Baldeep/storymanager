@@ -107,18 +107,20 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
+                                <input type="input" id="modal_add_player_type" class="hidden">
+                                <input type="input" id="modal_player_id" class="hidden">
                                 <div class="row form-inline">
                                     <div class="col-sm-3">
-                                        <label for="input_character_name">Character Name</label>
+                                        <span for="input_character_name"><strong>Character Name:</strong></span>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="input_character_name" placeholder="Altair Dawnfoe">
+                                        <input type="text" class="form-control" autofocus id="input_character_name" placeholder="Altair Dawnfoe">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row form-inline">
                                     <div class="col-sm-3">
-                                        <label for="input_character_name">Player Name</label>
+                                        <span for="input_character_name"><strong>Player Name:</strong></span>
                                     </div>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" id="input_player_name" placeholder="Robert Smith">
@@ -167,25 +169,51 @@
 
 
             $(document).on("click", "#btn-add-player", function(){
+                $("#input_character_name").val("");
+                $("#input_player_name").val("");
+                $("#modal_player_id").val("");
+                $("#modal_add_player_type").val("new");
                 $("#modal-add-player").modal();
             });
+
+            $('#modal-add-player').on('shown.bs.modal', function () {
+                $("#input_character_name").focus()
+            })
+            
 
             $(document).on("dblclick", ".player_list", function(){
                 var char_name = $(this).children(".character_name").text();
                 console.log("name = " + char_name);
+                $("#input_character_name").val(char_name);
                 var play_name = $(this).children(".player_name").text();
                 console.log("player = " + play_name)
-                $("modal-add-player").modal();
+                $("#input_player_name").val(play_name);
+                $("#modal_player_id").val($(this).attr("id"));
+                console.log("id: " + $("#modal_player_id").val());
+                $("#modal_add_player_type").val("edit");
+                $("#modal-add-player").modal();
             });
 
             $(document).on("click", "#modal-add-player-save", function(){
-                var char_name = $("#input_character_name").text();
+                var char_name = $("#input_character_name").val();
                 console.log("name = " + char_name);
-                var play_name = $("input_player_name").text();
+                var play_name = $("#input_player_name").val();
                 console.log("player = " + play_name)
-                $("player_list_div").append("<a href='#' class='list-group-item list-group-item-action player_list' id='" +  char_name + "'>" +
-                                            "<span class='list-group-item-heading character_name'><strong>"+ char_name + "'</strong></span>'" +
+
+                var action = $("#modal_add_player_type").val();
+                console.log("player modal: " + action);
+                if(action == "new"){
+                    $("#player_list_div").append("<a href='#' class='list-group-item list-group-item-action player_list' id='" +  char_name + "'>" +
+                                            "<span class='list-group-item-heading character_name'><strong>"+ char_name + "</strong></span>" +
                                             "<p class='list-group-item-text player_name'>" + play_name + "</p></a>");
+                } else {
+                    var id = $("#modal_player_id").val();
+                    console.log("id :" + id);
+                    $("#"+id).children(".character_name").html("<strong>" + char_name + "</strong>");
+                    $("#"+id).children(".player_name").text(play_name);
+                }
+
+                $("#modal-add-player").modal("hide");
             });
 
             initFlowChart();
