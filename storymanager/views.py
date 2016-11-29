@@ -12,3 +12,5 @@ def mission_screen(request, mission_id):
 		return render(request, 'storymanager/mission_screen.html', {'mission' : mission})
 	return render(request, 'storymanager/mission_screen.html', {'mission' : mission})
 	
+def repository_screen(request):
+	return render(request, 'storymanager/repository_screen.html')

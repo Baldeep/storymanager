@@ -1,0 +1,383 @@
+<!DOCTYPE html>=
+<html>
+    <head>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
+
+
+        <title>Mission</title>
+    </head>
+
+    <!-- Purple 660DBA
+         Darker Purple 58009B -->
+    <body style="padding-top:35px; padding-right: 30px; padding-left: 30px">
+        <div class="navbar-fixed-top" style="background-color : #58009B; border-color: #000">
+            <div id="navigation" class="navbar" 
+                style="background-color: #660DBA; border-color: #660DBA;margin-bottom: 2px">
+                <div class="container-fluid">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-sm-12">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >GMGM</a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a href="#" style="color:#fff">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" style="color:#fff">Repositories</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        	<div class="row" style="margin-top:40px">
+                <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default"> 
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Repositories </span>
+                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="list-group" id="player_list_div" style="overflow-y:auto">
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player1">
+                                    <span class="list-group-item-heading character_name"><strong>Enemies</strong></span>
+                                    <p class="list-group-item-text player_name">3 Items</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player2">
+                                    <span class="list-group-item-heading character_name"><strong>Items</strong></span>
+                                    <p class="list-group-item-text player_name">2 Items</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player_list" id="player3">
+                                    <span class="list-group-item-heading character_name"><strong>Spells</strong></span>
+                                    <p class="list-group-item-text player_name">0 Items</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default" id="repo-space">
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Enemies </span>
+                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-scene"></button>
+                        </div>
+                        <div class="panel-body" style="height:90%">
+                            <div class="list-group" id="scene_list_div" style="overflow-y:auto">
+                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                    <row>
+                                        <span class="list-group-item-heading scene_name"><strong>Goblin 1</strong></span>
+                                    </row>
+                                    <row>
+                                        <textarea class="list-group-item-text scene_desc" style="width: 100%">
+                                                    Small/Green. Can attack twice.
+                                        </textarea>
+                                    </row>
+                                    <row>
+                                        <span>Macros:</span>
+                                        <row>
+                                            <div class="row form-inline">
+                                                <div class="form-group">
+                                                    <div class="col-sm-2">
+                                                        <span for="input_scene_name"><strong>Dagger:</strong></span>
+                                                    </div>
+                                                    <div class="col-sm-10 form-inline"> 
+                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
+                                                        x D
+                                                        <select class="selectpicker" id="dice_type" style="width: 15px">
+                                                            <option>2</option>
+                                                            <option>4</option>
+                                                            <option>6</option>
+                                                            <option>8</option>
+                                                            <option>10</option>
+                                                            <option>12</option>
+                                                            <option>20</option>
+                                                            <option>100</option>
+                                                        </select>
+                                                        &emsp;
+                                                        <select class="selectpicker" id="dice_modifier_type" style="width: 15px">
+                                                            <option>+</option>
+                                                            <option>-</option>
+                                                        </select>
+                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
+                                                        <button class="btn_roll_macro btn btn-primary glyphicon glyphicon-play"></button>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                         </row>
+                                    </row>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                    <row>
+                                        <span class="list-group-item-heading scene_name"><strong>Guard</strong></span>
+                                    </row>
+                                    <row>
+                                        <textarea class="list-group-item-text scene_desc" style="width: 100%">
+                                                    Guard, loyal, will stop at nothing to bring justice!
+                                        </textarea>
+                                    </row>
+                                    <row>
+                                        <span>Macros:</span>
+                                        <row>
+                                            <div class="row form-inline">
+                                                <div class="form-group">
+                                                    <div class="col-sm-2">
+                                                        <span for="input_scene_name"><strong>Dagger:</strong></span>
+                                                    </div>
+                                                    <div class="col-sm-10 form-inline"> 
+                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
+                                                        x D
+                                                        <select class="selectpicker" id="dice_type" style="width: 15px">
+                                                            <option>2</option>
+                                                            <option>4</option>
+                                                            <option>6</option>
+                                                            <option>8</option>
+                                                            <option>10</option>
+                                                            <option>12</option>
+                                                            <option>20</option>
+                                                            <option>100</option>
+                                                        </select>
+                                                        &emsp;
+                                                        <select class="selectpicker" id="dice_modifier_type" style="width: 15px">
+                                                            <option>+</option>
+                                                            <option>-</option>
+                                                        </select>
+                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
+                                                        <button class="btn_roll_macro btn btn-primary glyphicon glyphicon-play"></button>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                         </row>
+                                    </row>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                    <row>
+                                        <span class="list-group-item-heading scene_name"><strong>Bandit Leader</strong></span>
+                                    </row>
+                                    <row>
+                                        <textarea class="list-group-item-text scene_desc" style="width: 100%">
+                                                    Large, immune to poison. 
+                                        </textarea>
+                                    </row>
+                                    <row>
+                                        <span>Macros:</span>
+                                        <row>
+                                            <div class="row form-inline">
+                                                <div class="form-group">
+                                                    <div class="col-sm-2">
+                                                        <span for="input_scene_name"><strong>Dagger:</strong></span>
+                                                    </div>
+                                                    <div class="col-sm-10 form-inline"> 
+                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
+                                                        x D
+                                                        <select class="selectpicker autoWidth" id="dice_type" style="width: 15px">
+                                                            <option>2</option>
+                                                            <option>4</option>
+                                                            <option>6</option>
+                                                            <option>8</option>
+                                                            <option>10</option>
+                                                            <option>12</option>
+                                                            <option>20</option>
+                                                            <option>100</option>
+                                                        </select>
+                                                        &emsp;
+                                                        <select class="selectpicker" id="dice_modifier_type" style="width: auto">
+                                                            <option>+</option>
+                                                            <option>-</option>
+                                                        </select>
+                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
+                                                        <button class="btn_roll_macro btn btn-primary glyphicon glyphicon-play"></button>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                         </row>
+                                    </row>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="modal-add-scene">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Add a player</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="input" id="modal_add_scene_type" class="hidden">
+                                <input type="input" id="modal_scene_id" class="">
+                                <div class="row form-inline">
+                                    <div class="col-sm-3">
+                                        <span for="input_scene_name"><strong>Scene Name:</strong></span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" maxlength="50" autofocus id="input_scene_name" placeholder="Ruins of Drakar">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row form-inline">
+                                    <div class="col-sm-3">
+                                        <span for="input_character_name"><strong>Description:</strong></span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" maxlength="100" id="input_scene_desc"></textarea>
+                                        <br>
+                                        <small><span id="characters">0/100</span></small>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="modal-add-scene-save">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+    </body>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+
+
+            $(document).on("click", "#btn-add-player", function(){
+                $("#input_character_name").val("");
+                $("#input_player_name").val("");
+                $("#modal_player_id").val("");
+                $("#modal_add_player_type").val("new");
+                $("#modal-add-player").modal();
+            });
+
+            $('#modal-add-player').on('shown.bs.modal', function () {
+                $("#input_character_name").focus()
+            })
+            
+            $('.selectpicker').selectpicker({
+                style: 'width:30px',
+                size: 4
+            });
+
+            $(document).on("dblclick", ".player_list", function(){
+                var char_name = $(this).children(".character_name").text();
+                console.log("name = " + char_name);
+                $("#input_character_name").val(char_name);
+                var play_name = $(this).children(".player_name").text();
+                console.log("player = " + play_name)
+                $("#input_player_name").val(play_name);
+                $("#modal_player_id").val($(this).attr("id"));
+                console.log("id: " + $("#modal_player_id").val());
+                $("#modal_add__type").val("edit");
+                $("#modal-add-player").modal();
+            });
+
+            $(document).on("click", "#modal-add-player-save", function(){
+                var char_name = $("#input_character_name").val();
+                console.log("name = " + char_name);
+                var play_name = $("#input_player_name").val();
+                console.log("player = " + play_name)
+
+                var action = $("#modal_add_player_type").val();
+                console.log("player modal: " + action);
+                if(action == "new"){
+                    $("#player_list_div").append("<a href='#' class='list-group-item list-group-item-action player_list' id='" +  char_name + "'>" +
+                                            "<span class='list-group-item-heading character_name'><strong>"+ char_name + "</strong></span>" +
+                                            "<p class='list-group-item-text player_name'>" + play_name + "</p></a>");
+                } else {
+                    var id = $("#modal_player_id").val();
+                    console.log("id :" + id);
+                    $("#"+id).children(".character_name").html("<strong>" + char_name + "</strong>");
+                    $("#"+id).children(".player_name").text(play_name);
+                }
+
+                $("#modal-add-player").modal("hide");
+            });
+
+            /** SCNENE **/
+            $(document).on("click", "#btn-add-scene", function(){
+                $("#input_scene_name").val("");
+                $("#input_scene_desc").val("");
+                $("#modal_scene_id").val("");
+                $("#modal_add_scene_type").val("new");
+                $("#modal-add-scene").modal();
+            });
+
+            $('#modal-add-scene').on('shown.bs.modal', function () {
+                $("#input_scene_name").focus()
+            })
+            
+
+            $(document).on("dblclick", ".scene_list", function(){
+                var char_name = $(this).children(".scene_name").text();
+                console.log("scene = " + char_name);
+                $("#input_scene_name").val(char_name);
+                var play_name = $(this).children(".scene_desc").text();
+                console.log("desc = " + play_name)
+                $("#input_scene_desc").val(play_name);
+                $("#modal_scene_id").val($(this).attr("id"));
+                console.log("id: " + $("#modal_scene_id").val());
+                $("#modal_add_scene_type").val("edit");
+                $("#modal-add-scene").modal();
+            });
+
+            $(document).on("click", "#modal-add-scene-save", function(){
+                var char_name = $("#input_scene_name").val();
+                console.log("name = " + char_name);
+                var play_name = $("#input_scene_desc").val();
+                console.log("desc = " + play_name)
+
+                var action = $("#modal_add_scene_type").val();
+                console.log("scene modal: " + action);
+                if(action == "new"){
+                    $("#scene_list_div").append("<a href='#' class='list-group-item list-group-item-action scene_list' id='" +  char_name + "'>" +
+                                            "<span class='list-group-item-heading scene_name'><strong>"+ char_name + "</strong></span>" +
+                                            "<p class='list-group-item-text scene_desc'>" + play_name + "</p></a>");
+                } else {
+                    var id = $("#modal_scene_id").val();
+                    console.log("id :" + id);
+                    $("#"+id).children(".scene_name").html("<strong>" + char_name + "</strong>");
+                    $("#"+id).children(".scene_desc").text(play_name);
+                }
+
+                $("#modal-add-scene").modal("hide");
+            });
+
+            /*** Counting description chars **/
+            $('#input_scene_desc').keydown(function(){
+                var text_length = $('#input_scene_desc').val().length;
+
+                $('#characters').html(text_length + "/100");
+            });  
+
+        });
+    </script>
+</html>
