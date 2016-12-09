@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'storymanager/style.css' %}" />
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'storymanager/style.css' %}" />
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- Go.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>
+
+        <title>Scene</title>
+    </head>
+
+    <!-- Purple 660DBA
+         Darker Purple 58009B -->
+    <body style="padding-top:35px; padding-right: 30px; padding-left: 30px">
+       <div class="navbar-fixed-top" style="background-color : #58009B; border-color: #000">
+            <div id="navigation" class="navbar" 
+                style="background-color: #660DBA; border-color: #660DBA;margin-bottom: 2px">
+                <div class="container-fluid">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-sm-12">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >ScrollMaster</a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a href="/gmgm/home/" style="color:#fff">Home</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                                                aria-haspopup="true" aria-expanded="false" style="color:#fff">Stories<span class="caret"></span></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="/gmgm/mission_1">My First Story</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="/gmgm/mission_1" id="1">My First Mission</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="2">Mission 2</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="3">Mission 3</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                        <a href="/gmgm/repo/" style="color:#fff">Repos</a>
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-warning pull-right" style="margin-top: 10px; margin-right:5px">
+                                                                    Rulebook&nbsp;<span class="glyphicon glyphicon-file"></span></button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ol class="breadcrumb" style="margin-top: 23px; margin-left: 0px; margin-left: 0px">
+            <li class="breadcrumb-item active">My First Story</li> 
+            <li class="breadcrumb-item active">My First Mission</li> 
+            <li class="breadcrumb-item active">Scene 1</li> 
+        </ol>
+        
+      
+       
+        	<div class="row" style="margin-top:5px">
+                <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default"> 
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Players List </span>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="list-group" id="player-list-div" style="overflow-y:auto">
+                                <a href="#" class="list-group-item list-group-item-action player-list" id="player1">
+                                    <span class="list-group-item-heading character-name"><strong>Marlock the Magician</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right"></button>
+                                    <p class="list-group-item-text player-name">Michael</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player-list" id="player2">
+                                    <span class="list-group-item-heading character-name"><strong>Barbus the Barbarian</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right"></button>
+                                    <p class="list-group-item-text player-name">Betty</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player-list" id="player3">
+                                    <span class="list-group-item-heading character-name"><strong>Winfred the Warrior</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right"></button>
+                                    <p class="list-group-item-text player-name">Walter</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player-list" id="player4">
+                                    <span class="list-group-item-heading character-name"><strong>Paul the Paladin</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right"></button>
+                                    <p class="list-group-item-text player-name">Paul</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player-list" id="player4">
+                                    <span class="list-group-item-heading character-name"><strong>Goblin 1</strong></span>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action player-list" id="player4">
+                                    <span class="list-group-item-heading character-name"><strong>Town Guard</strong></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6" style="padding-right: 8px; padding-left: 8px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Scene 1 </span>
+                            
+                        </div>
+                        <div class="panel-body" style="height:90%">
+                            <div style="margin-bottom: 15px">
+                                <span style="margin-top: 10px">Next: <strong><span id="next-turn">Marlock The Magician </span></strong></span>
+                                <button class="btn btn-primary btn-next-turn pull-right glyphicon glyphicon-arrow-right"></button>
+                            </div>
+                            <div>
+                                <span>Notes: </span>
+                                <textarea type="text" class="form-control" maxlength="100" id="input-notes" style="width:100%"></textarea>
+                                <small class="pull-right"><span id="characters">0/1000</span></small>
+                                <br>
+                            </div>
+
+                            <div class="list-group" id="repo-list-div-enemies">
+                            
+                                <a href="#0" class="list-group-item list-group-item-action repo-item" id="enemy1">
+                                    <div >
+                                        <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item-name h4">Goblin 1</span>
+                                            <button class="btn btn-danger glyphicon glyphicon-remove pull-right"></button>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item-desc" style="width: 100%" 
+                                            >Small/Green. Can attack twice.</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#enemy1-macros"></span>
+                                        </div>
+                                    <div class="macros-table-div collapse" id="enemy1-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div>
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">y</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                     <tr id="macro-1">
+                                                        <td class="macro-name">Bite</td>
+                                                        <td class="macro-dice">3</td>
+                                                        <td class="macro-dice-type">d6</td>
+                                                        <td class="macro-modifier-type">+</td>
+                                                        <td class="macro-modifier-val">2</td>
+                                                        <td>
+                                                            <button class="btn btn-success glyphicon glyphicon-play" id="goblin-bite-attack"></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </a>
+                               
+                                <a href="#0" class="list-group-item list-group-item-action scene-list" id="item1-a">
+                                    <div>
+                                         <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item-name h4">Town Guard</span>
+                                            <button class="btn btn-danger glyphicon glyphicon-remove pull-right"></button>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item-desc" style="width: 100%"
+                                            >Guard, loyal, will stop at nothing to bring justice!</textarea>
+                                        </div>
+                                        <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#enemy2-macros"></span>
+                                        </div>
+                                    </div>
+                                    <div class="macros-table-div collapse" id="enemy2-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div class="row-margin-bottom">
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">y</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                    <tr id="macro-1">
+                                                        <td>Sword</td>
+                                                        <td>3</td>
+                                                        <td>d6</td>
+                                                        <td>+</td>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <button class="btn btn-success glyphicon glyphicon-play btn-play-macro"></button>
+                                                        </td>
+                                                    </tr>
+                                                     
+                                                </tbody>
+                                             </table>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Repo </span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="input-group" style="margin-bottom: 10px">
+                                <input type="text" class="form-control" placeholder="Search Repos" aria-describedby="basic-addon2">
+                                <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon2"></span>
+
+                            </div>
+                            <div class="list-group" id="scene-list-div" style="overflow-y:auto">
+                                <a href="#" class="list-group-item list-group-item-action scene-list" id="scene1">
+                                    <span class="list-group-item-heading scene-name"><strong>Goblin 1</strong></span>
+                                    <button class="btn btn-info glyphicon glyphicon-plus pull-right"></button>
+                                    <p class="list-group-item-text scene-desc">Small/Green. Can attack twice.</p>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action scene-list" id="scene2">
+                                    <span class="list-group-item-heading scene-name"><strong>Town Guard</strong></span>
+                                    <button class="btn btn-info glyphicon glyphicon-plus pull-right"></button>
+                                    <p class="list-group-item-text scene-desc">Guard, loyal, will stop at nothing to bring justice!</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="modal-macro">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Bite</h4>
+                        </div>
+                        <div class="modal-body">
+                            <span>Roll: <span id="roll-value"></span></span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+    </body>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+
+            $(document).on("click", ".caret", function(){
+                $(this).parent().addClass("dropup");
+            });
+
+            $(document).on("click", ".dropup", function(){
+                $(this).removeClass("dropup");
+            });
+            
+            $(document).on("click", "#goblin-bite-attack", function(){
+                var dice = $(this).parents("tr").children(".macro-dice").html();
+                console.log("dice " + dice);
+                var dicetype = $(this).parents("tr").children(".macro-dice-type").html();
+                dicetype = dicetype.substring(1);
+                console.log("dice type d-" + dicetype);
+                var modtype = $(this).parents("tr").children(".macro-modifier-type").html();
+                console.log("modtype " + modtype);
+                var modval = $(this).parents("tr").children(".macro-modifier-val").html();
+                console.log("modval " + modval);
+
+                var total = 0;
+                var i = 0;
+                for(i = 0; i < dice; i++){
+                    var random = Math.floor((Math.random() * dicetype) + 1);
+                    console.log("random: " + random)
+                    total += random;
+                }  
+                console.log("total: " + total);
+                if(modtype == "+"){
+                    total += parseInt(modval);
+                } else {
+                    total -= parseInt(mmodval);
+                }
+                console.log("total: " + total);
+
+                $("#roll-value").text(total);
+                $("#modal-macro").modal();
+            });
+
+             $(document).on("click", ".btn-edit-player", function(){
+                var char_name = $(this).parent("a").children(".character_name").text();
+                console.log("name = " + char_name);
+                $("#input_character_name").val(char_name);
+                var play_name = $(this).parent("a").children(".player_name").text();
+                console.log("player = " + play_name)
+                $("#input_player_name").val(play_name);
+                $("#modal_player_id").val($(this).attr("id"));
+                console.log("id: " + $("#modal_player_id").val());
+                $("#modal_add__type").val("edit");
+                $("#modal-add-player").modal();
+            });
+
+            $(document).on("click", "#modal-add-player-save", function(){
+                var char_name = $("#input_character_name").val();
+                console.log("name = " + char_name);
+                var play_name = $("#input_player_name").val();
+                console.log("player = " + play_name)
+
+                var action = $("#modal_add_player_type").val();
+                console.log("player modal: " + action);
+                if(action == "new"){
+                    $("#player_list_div").append("<a href='#' class='list-group-item list-group-item-action player_list' id='" +  char_name + "'>" +
+                                            "<span class='list-group-item-heading character_name'><strong>"+ char_name + "</strong></span>" +
+                                            "<p class='list-group-item-text player_name'>" + play_name + "</p></a>");
+                } else {
+                    var id = $("#modal_player_id").val();
+                    console.log("id :" + id);
+                    $("#"+id).children(".character_name").html("<strong>" + char_name + "</strong>");
+                    $("#"+id).children(".player_name").text(play_name);
+                }
+
+                $("#modal-add-player").modal("hide");
+            });
+
+            /*** Counting description chars **/
+            $('#input-notes').keydown(function(){
+                var textlength = $('#input-notes').val().length;
+
+                $('#characters').html((textlength+1) + "/1000");
+            });   
+
+        });
+    </script>
+</html>

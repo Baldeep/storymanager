@@ -1,14 +1,20 @@
-<!DOCTYPE html>=
+<!DOCTYPE html>
+{% load static %}
+
 <html>
     <head>
+
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'storymanager/style.css' %}" />
+
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Optional theme 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -23,7 +29,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
 
 
-        <title>Mission</title>
+        <title>Repository</title>
     </head>
 
     <!-- Purple 660DBA
@@ -36,17 +42,36 @@
                     <div class="row" style="margin-top: 5px;">
                         <div class="col-sm-12">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >GMGM</a>
+                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >ScrollMaster</a>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
                                         <li>
-                                            <a href="#" style="color:#fff">Home</a>
+                                            <a href="/gmgm/home/" style="color:#fff">Home</a>
                                         </li>
-                                        <li>
-                                            <a href="#" style="color:#fff">Repositories</a>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                                                aria-haspopup="true" aria-expanded="false" style="color:#fff">Stories<span class="caret"></span></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="/gmgm/mission_1">My First Story</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="/gmgm/mission_1" id="1">My First Mission</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="2">Mission 2</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="3">Mission 3</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
+                                    <button class="btn btn-warning pull-right" style="margin-top: 10px; margin-right:5px">
+                                                                    Rulebook&nbsp;<span class="glyphicon glyphicon-file"></span></button>
                                 </div>
                         </div>
                     </div>
@@ -60,162 +85,452 @@
                     <div class="panel panel-default"> 
                         <div class="panel-heading" style="height:50px">
                             <span style="margin-top:100px">Repositories </span>
-                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
                         </div>
                         <div class="panel-body">
                             <div class="list-group" id="player_list_div" style="overflow-y:auto">
-                                <a href="#" class="list-group-item list-group-item-action player_list" id="player1">
+                                <div class="list-group-item list-group-item-action repo-list-item" id="btn-enemy-list">
                                     <span class="list-group-item-heading character_name"><strong>Enemies</strong></span>
-                                    <p class="list-group-item-text player_name">3 Items</p>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action player_list" id="player2">
+                                    <p class="list-group-item-text player_name">2 Items</p>
+                                </div>
+                                <div class="list-group-item list-group-item-action repo-list-item" id="btn-items-list">
                                     <span class="list-group-item-heading character_name"><strong>Items</strong></span>
                                     <p class="list-group-item-text player_name">2 Items</p>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action player_list" id="player3">
+                                </div>
+                                <div class="list-group-item list-group-item-action repo-list-item" id="btn-spells-list">
                                     <span class="list-group-item-heading character_name"><strong>Spells</strong></span>
-                                    <p class="list-group-item-text player_name">0 Items</p>
-                                </a>
+                                    <p class="list-group-item-text player_name">1 Item</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-9" style="padding-right: 7px; padding-left: 7px">
-                    <div class="panel panel-default" id="repo-space">
+                    <div class="panel panel-default repo-space active-repo-list" id="Enemies">
                         <div class="panel-heading" style="height:50px">
                             <span style="margin-top:100px">Enemies </span>
-                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-scene"></button>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right btn-add-repo-item"></button>
                         </div>
                         <div class="panel-body" style="height:90%">
-                            <div class="list-group" id="scene_list_div" style="overflow-y:auto">
-                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
-                                    <row>
-                                        <span class="list-group-item-heading scene_name"><strong>Goblin 1</strong></span>
-                                    </row>
-                                    <row>
-                                        <textarea class="list-group-item-text scene_desc" style="width: 100%">
-                                                    Small/Green. Can attack twice.
-                                        </textarea>
-                                    </row>
-                                    <row>
-                                        <span>Macros:</span>
-                                        <row>
-                                            <div class="row form-inline">
-                                                <div class="form-group">
-                                                    <div class="col-sm-2">
-                                                        <span for="input_scene_name"><strong>Dagger:</strong></span>
-                                                    </div>
-                                                    <div class="col-sm-10 form-inline"> 
-                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
-                                                        x D
-                                                        <select class="selectpicker" id="dice_type" style="width: 15px">
-                                                            <option>2</option>
-                                                            <option>4</option>
-                                                            <option>6</option>
-                                                            <option>8</option>
-                                                            <option>10</option>
-                                                            <option>12</option>
-                                                            <option>20</option>
-                                                            <option>100</option>
-                                                        </select>
-                                                        &emsp;
-                                                        <select class="selectpicker" id="dice_modifier_type" style="width: 15px">
-                                                            <option>+</option>
-                                                            <option>-</option>
-                                                        </select>
-                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
-                                                        <button class="btn_roll_macro btn btn-primary glyphicon glyphicon-play"></button>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                         </row>
-                                    </row>
+                            <div class="list-group" id="repo_list_div_enemies">
+                            
+                                <a href="#0" class="list-group-item list-group-item-action repo_item" id="enemy1">
+                                    <div >
+                                        <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item_name h3"">Goblin 1</span>
+                                            <button type="button" class="btn btn-danger glyphicon glyphicon-remove btn-delete-repo_item pull-right"></button>
+                                            <span class="pull-right">&nbsp;</span>
+                                            <button type="button" class="btn btn-default glyphicon glyphicon-pencil btn-edit-repo_item pull-right"></button>
+                                            
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item_desc" style="width: 100%" 
+                                            >Small/Green. Can attack twice.</textarea>
+                                        </div>
+                                        <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#enemy1-macros"></span>
+                                        </div>
+                                    </div>
+                                    <div class="macros-table-div collapse" id="enemy1-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div>
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">dy</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                     <tr class="last-item-add-macro">
+                                                        <td>
+                                                            <input type="text" name="macro-name" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="num-of-dice" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice_type" data-width="auto">
+                                                                <option>d2</option>
+                                                                <option>d4</option>
+                                                                <option selected>d6</option>
+                                                                <option>d8</option>
+                                                                <option>d10</option>
+                                                                <option>d12</option>
+                                                                <option>d20</option>
+                                                                <option>d100</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice-modifier-type" data-width="auto">
+                                                                <option>+</option>
+                                                                <option>-</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="modifier-value" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-info glyphicon glyphicon-plus"></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
-                                    <row>
-                                        <span class="list-group-item-heading scene_name"><strong>Guard</strong></span>
-                                    </row>
-                                    <row>
-                                        <textarea class="list-group-item-text scene_desc" style="width: 100%">
-                                                    Guard, loyal, will stop at nothing to bring justice!
-                                        </textarea>
-                                    </row>
-                                    <row>
-                                        <span>Macros:</span>
-                                        <row>
-                                            <div class="row form-inline">
-                                                <div class="form-group">
-                                                    <div class="col-sm-2">
-                                                        <span for="input_scene_name"><strong>Dagger:</strong></span>
-                                                    </div>
-                                                    <div class="col-sm-10 form-inline"> 
-                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
-                                                        x D
-                                                        <select class="selectpicker" id="dice_type" style="width: 15px">
-                                                            <option>2</option>
-                                                            <option>4</option>
-                                                            <option>6</option>
-                                                            <option>8</option>
-                                                            <option>10</option>
-                                                            <option>12</option>
-                                                            <option>20</option>
-                                                            <option>100</option>
-                                                        </select>
-                                                        &emsp;
-                                                        <select class="selectpicker" id="dice_modifier_type" style="width: 15px">
-                                                            <option>+</option>
-                                                            <option>-</option>
-                                                        </select>
-                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
-                                                        <button class="btn_roll_macro btn btn-primary glyphicon glyphicon-play"></button>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                         </row>
-                                    </row>
+                               
+                                <a href="#0" class="list-group-item list-group-item-action scene_list" id="item1-a">
+                                    <div>
+                                         <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item_name h3" data-toggle="tooltip" title="Click To Expand">Town Guard</span>
+                                            <button type="button" class="btn btn-danger glyphicon glyphicon-remove btn-delete-repo_item pull-right"></button>
+                                            <span class="pull-right">&nbsp;</span>
+                                            <button type="button" class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-repo_item"></button>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item_desc" style="width: 100%"
+                                            >Guard, loyal, will stop at nothing to bring justice!</textarea>
+                                        </div>
+                                        <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#enemy2-macros"></span>
+                                        </div>
+                                    </div>
+                                    <div class="macros-table-div collapse" id="enemy2-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div class="row-margin-bottom">
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">dy</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                    <tr id="macro_1">
+                                                        <td>Sword</td>
+                                                        <td>3</td>
+                                                        <td>d6</td>
+                                                        <td>+</td>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <button class="btn btn-default glyphicon glyphicon-pencil"></button>
+                                                        </td>
+                                                    </tr>
+                                                     <tr class="last-item-add-macro">
+                                                        <td>
+                                                            <input type="text" name="macro-name" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="num-of-dice" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice_type" data-width="auto">
+                                                                <option>d2</option>
+                                                                <option>d4</option>
+                                                                <option selected>d6</option>
+                                                                <option>d8</option>
+                                                                <option>d10</option>
+                                                                <option>d12</option>
+                                                                <option>d20</option>
+                                                                <option>d100</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice-modifier-type" data-width="auto">
+                                                                <option>+</option>
+                                                                <option>-</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="modifier-value" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-info glyphicon glyphicon-plus"></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                             </table>
+                                        </div>
+                                    </div>
                                 </a>
-                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
-                                    <row>
-                                        <span class="list-group-item-heading scene_name"><strong>Bandit Leader</strong></span>
-                                    </row>
-                                    <row>
-                                        <textarea class="list-group-item-text scene_desc" style="width: 100%">
-                                                    Large, immune to poison. 
-                                        </textarea>
-                                    </row>
-                                    <row>
-                                        <span>Macros:</span>
-                                        <row>
-                                            <div class="row form-inline">
-                                                <div class="form-group">
-                                                    <div class="col-sm-2">
-                                                        <span for="input_scene_name"><strong>Dagger:</strong></span>
-                                                    </div>
-                                                    <div class="col-sm-10 form-inline"> 
-                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
-                                                        x D
-                                                        <select class="selectpicker autoWidth" id="dice_type" style="width: 15px">
-                                                            <option>2</option>
-                                                            <option>4</option>
-                                                            <option>6</option>
-                                                            <option>8</option>
-                                                            <option>10</option>
-                                                            <option>12</option>
-                                                            <option>20</option>
-                                                            <option>100</option>
-                                                        </select>
-                                                        &emsp;
-                                                        <select class="selectpicker" id="dice_modifier_type" style="width: auto">
-                                                            <option>+</option>
-                                                            <option>-</option>
-                                                        </select>
-                                                        <input type="text" class="form-control" maxlength="3" autofocus id="input_scene_name" style="width: 10%">
-                                                        <button class="btn_roll_macro btn btn-primary glyphicon glyphicon-play"></button>
-                                                    </div>
-                                                </div>
-                                             </div>
-                                         </row>
-                                    </row>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default repo-space hidden" id="Items">
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Items </span>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right btn-add-repo-item"></button>
+                        </div>
+                        <div class="panel-body" style="height:90%">
+                            <div class="list-group" id="repo_list_div_enemies">
+                            
+                                <a href="#0" class="list-group-item list-group-item-action repo_item" id="item1">
+                                    <div >
+                                         <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item_name h3">Small Bag of Hold All</span>
+                                            <button type="button" class="btn btn-danger glyphicon glyphicon-remove btn-delete-repo_item pull-right"></button>
+                                            <span class="pull-right">&nbsp;</span>
+                                            <button type="button" class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-repo_item"></button>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item_desc" style="width: 100%" 
+                                            >Weighs 0.5lb, can store up to 15 small items, ignoring their weight.</textarea>
+                                        </div>
+                                        <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#item1-macros"></span>
+                                        </div>
+                                    </div>
+                                    <div class="macros-table-div collapse" id="item1-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div>
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">dy</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                     <tr class="last-item-add-macro">
+                                                        <td>
+                                                            <input type="text" name="macro-name" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="num-of-dice" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice_type" data-width="auto">
+                                                                <option>d2</option>
+                                                                <option>d4</option>
+                                                                <option selected>d6</option>
+                                                                <option>d8</option>
+                                                                <option>d10</option>
+                                                                <option>d12</option>
+                                                                <option>d20</option>
+                                                                <option>d100</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice-modifier-type" data-width="auto">
+                                                                <option>+</option>
+                                                                <option>-</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="modifier-value" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-info glyphicon glyphicon-plus"></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </a>
+                               
+                                <a href="#0" class="list-group-item list-group-item-action scene_list" id="item2-a">
+                                    <div data-toggle="collapse" data-target="#item2-macros">
+                                         <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item_name h3">Sword of Tiny Feet</span>
+                                            <button type="button" class="btn btn-danger glyphicon glyphicon-remove btn-delete-repo_item pull-right"></button>
+                                            <span class="pull-right">&nbsp;</span>
+                                            <button type="button" class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-repo_item"></button>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item_desc" style="width: 100%"
+                                            >A magical sword which can give the enemy tiny feet, making them lose balance and fall over.</textarea>
+                                        </div>
+                                        <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#item2-macros"></span>
+                                        </div>
+                                    </div>
+                                    <div class="macros-table-div collapse" id="item2-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div class="row-margin-bottom">
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">dy</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                    <tr id="macro_1">
+                                                        <td>Damage</td>
+                                                        <td>3</td>
+                                                        <td>d8</td>
+                                                        <td>+</td>
+                                                        <td>2</td>
+                                                        <td>
+                                                            <button class="btn btn-default glyphicon glyphicon-pencil"></button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr id="macro_1">
+                                                        <td>Tiny Feet (>15) </td>
+                                                        <td>1</td>
+                                                        <td>d20</td>
+                                                        <td>+</td>
+                                                        <td>0</td>
+                                                        <td>
+                                                            <button class="btn btn-default glyphicon glyphicon-pencil"></button>
+                                                        </td>
+                                                    </tr>
+                                                     <tr class="last-item-add-macro">
+                                                        <td>
+                                                            <input type="text" name="macro-name" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="num-of-dice" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice_type" data-width="auto">
+                                                                <option>d2</option>
+                                                                <option>d4</option>
+                                                                <option selected>d6</option>
+                                                                <option>d8</option>
+                                                                <option>d10</option>
+                                                                <option>d12</option>
+                                                                <option>d20</option>
+                                                                <option>d100</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice-modifier-type" data-width="auto">
+                                                                <option>+</option>
+                                                                <option>-</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="modifier-value" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-info glyphicon glyphicon-plus"></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                             </table>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default repo-space hidden" id="Spells">
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Spells </span>
+
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right btn-add-repo-item"></button>
+                        </div>
+                        <div class="panel-body" style="height:90%">
+                            <div class="list-group" id="repo_list_div_spells">
+                               
+                                <a href="#0" class="list-group-item list-group-item-action scene_list" id="spell1-a">
+                                    <div>
+                                         <div style="margin-bottom: 10px" >
+                                            <span class="list-group-item-heading item_name h3">Magic Missile</span>
+                                            <button type="button" class="btn btn-danger glyphicon glyphicon-remove btn-delete-repo_item pull-right"></button>
+                                            <span class="pull-right">&nbsp;</span>
+                                            <button type="button" class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-repo_item"></button>
+                                        </div>
+                                        <div style="padding-top: 10px">
+                                            <textarea class="list-group-item-text item_desc" style="width: 100%"
+                                            >Supereffective against the darkness.</textarea>
+                                        </div>
+                                        <div class="row">
+                                        <span class="caret pull-right" style="border-width: 8px; margin-right:15px; margin-top:5px" data-toggle="collapse" data-target="#spell1-macros"></span>
+                                        </div>
+                                    </div>
+                                    <div class="macros-table-div collapse" id="spell1-macros">
+                                        <div class="row-margin-bottom">
+                                            <span>Macros:</span>
+                                        </div>
+                                        <div class="row-margin-bottom">
+                                             <table class="table table-striped table-bordered table-responsive macros-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:40%">Name</th>
+                                                        <th style="width:15%">x</th>
+                                                        <th style="width:10%">dy</th>
+                                                        <th style="width:10%">+/-</th>
+                                                        <th style="width:15%">z</th>
+                                                        <th style="width:5%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="macros-table-body">
+                                                    <tr id="macro_1">
+                                                        <td>Damage</td>
+                                                        <td>1</td>
+                                                        <td>d8</td>
+                                                        <td>+</td>
+                                                        <td>3</td>
+                                                        <td>
+                                                            <button class="btn btn-default glyphicon glyphicon-pencil"></button>
+                                                        </td>
+                                                    </tr>
+                                                     <tr class="last-item-add-macro">
+                                                        <td>
+                                                            <input type="text" name="macro-name" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="num-of-dice" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice_type" data-width="auto">
+                                                                <option>d2</option>
+                                                                <option>d4</option>
+                                                                <option selected>d6</option>
+                                                                <option>d8</option>
+                                                                <option>d10</option>
+                                                                <option>d12</option>
+                                                                <option>d20</option>
+                                                                <option>d100</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <select class="selectpicker" id="dice-modifier-type" data-width="auto">
+                                                                <option>+</option>
+                                                                <option>-</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
+                                                            <input type="number" name="modifier-value" style="width:100%">
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-info glyphicon glyphicon-plus"></button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                             </table>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -223,41 +538,41 @@
                 </div>
             </div>
 
-            <div class="modal fade" tabindex="-1" role="dialog" id="modal-add-scene">
+            <div class="modal fade" tabindex="-1" role="dialog" id="modal-add-repo-item">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Add a player</h4>
+                            <h4 class="modal-title">Item in "<span class="repo-name"></span>"</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <input type="input" id="modal_add_scene_type" class="hidden">
-                                <input type="input" id="modal_scene_id" class="">
+                                <input type="input" id="modal_add_repo_type" class="hidden">
+                                <input type="input" id="modal_add_repo_name" class="hidden">
                                 <div class="row form-inline">
                                     <div class="col-sm-3">
-                                        <span for="input_scene_name"><strong>Scene Name:</strong></span>
+                                        <span for="input_label_item_name"><strong>Name:</strong></span>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" maxlength="50" autofocus id="input_scene_name" placeholder="Ruins of Drakar">
+                                        <input type="text" class="form-control" maxlength="50" autofocus id="input_item_name">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="row form-inline">
                                     <div class="col-sm-3">
-                                        <span for="input_character_name"><strong>Description:</strong></span>
+                                        <span for="input_character_name"><strong>Notes:</strong></span>
                                     </div>
                                     <div class="col-sm-9">
-                                        <textarea type="text" class="form-control" maxlength="100" id="input_scene_desc"></textarea>
+                                        <textarea type="text" class="form-control" maxlength="500" id="input_item_desc"></textarea>
                                         <br>
-                                        <small><span id="characters">0/100</span></small>
+                                        <small><span id="characters">0/500</span></small>
                                         
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" id="modal-add-scene-save">Save</button>
+                            <button type="button" class="btn btn-primary" id="modal-add-item-to-repo">Save</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div><!-- /.modal-content -->
@@ -269,113 +584,97 @@
         
         $(document).ready(function(){
 
-
-            $(document).on("click", "#btn-add-player", function(){
-                $("#input_character_name").val("");
-                $("#input_player_name").val("");
-                $("#modal_player_id").val("");
-                $("#modal_add_player_type").val("new");
-                $("#modal-add-player").modal();
+            $(".repo-list-item").hover(function(){
+                $(this).css("background", "#f5f5f5");
+                }, function(){
+                $(this).css("background", "#fff");
             });
 
-            $('#modal-add-player').on('shown.bs.modal', function () {
-                $("#input_character_name").focus()
+            $(document).on("click", ".caret", function(){
+                $(this).parent().addClass("dropup");
+            });
+
+            $(document).on("click", ".dropup", function(){
+                $(this).removeClass("dropup");
+            });
+
+
+            $(document).on("click", "#btn-enemy-list", function(){
+                //event.preventDefault();
+                $(".active-repo-list").addClass("hidden");
+                $(".active-repo-list").removeClass("active-repo-list");
+                $("#Enemies").addClass("active-repo-list");
+                $("#Enemies").removeClass("hidden");
+                console.log("Clicked enemy list");
+            });
+
+            $(document).on("click", "#btn-items-list", function(){
+                $(".active-repo-list").addClass("hidden");
+                $(".active-repo-list").removeClass("active-repo-list");
+                $("#Items").addClass("active-repo-list");
+                $("#Items").removeClass("hidden");
+                console.log("Clicked enemy list");
+            });
+
+            $(document).on("click", "#btn-spells-list", function(){
+                $(".active-repo-list").addClass("hidden");
+                $(".active-repo-list").removeClass("active-repo-list");
+                $("#Spells").addClass("active-repo-list");
+                $("#Spells").removeClass("hidden");
+                console.log("Clicked enemy list");
+            });
+
+            $(document).on("click", ".btn-add-repo-item", function(){
+                $("#input_item_name").val("");
+                $("#input_item_desc").val("");
+                $(".repo-name").html($(this).parents("div.repo-space").attr("id"));
+                $("#modal_add_repo_name").val($(this).parents("div.repo-space").attr("id"));
+                $("#modal_add_repo_type").val("new");
+                $("#modal-add-repo-item").modal();
+            });
+
+            $(document).on("click", ".btn-edit-repo_item", function(){
+                event.preventDefault();
+                console.log("clicked edit");
+                var name = $(this).find(".item_name").html();
+                
+                console.log("name: " + name);
+                $("#input_item_name").val(name);
+                $("#input_item_desc").val($(this).find(".item_desc").val());
+                $(".repo-name").html($(this).parents("div.repo-space").attr("id"));
+                $("#modal_add_repo_name").val($(this).parents("div.repo-space").attr("id"));
+                $("#modal_add_repo_type").val("edit");
+                $("#modal-add-repo-item").modal();
+            });
+
+            $(document).on("click", ".btn-delete-repo_item", function(){
+                $(this).parents("a").addClass("hidden");
+            });
+
+            $('#modal-add-repo-item').on('shown.bs.modal', function () {
+                $("#input_item_name").focus()
             })
             
             $('.selectpicker').selectpicker({
-                style: 'width:30px',
+                style: 'btn-default',
                 size: 4
             });
 
-            $(document).on("dblclick", ".player_list", function(){
-                var char_name = $(this).children(".character_name").text();
-                console.log("name = " + char_name);
-                $("#input_character_name").val(char_name);
-                var play_name = $(this).children(".player_name").text();
-                console.log("player = " + play_name)
-                $("#input_player_name").val(play_name);
-                $("#modal_player_id").val($(this).attr("id"));
-                console.log("id: " + $("#modal_player_id").val());
-                $("#modal_add__type").val("edit");
-                $("#modal-add-player").modal();
-            });
-
-            $(document).on("click", "#modal-add-player-save", function(){
-                var char_name = $("#input_character_name").val();
-                console.log("name = " + char_name);
-                var play_name = $("#input_player_name").val();
-                console.log("player = " + play_name)
-
-                var action = $("#modal_add_player_type").val();
-                console.log("player modal: " + action);
-                if(action == "new"){
-                    $("#player_list_div").append("<a href='#' class='list-group-item list-group-item-action player_list' id='" +  char_name + "'>" +
-                                            "<span class='list-group-item-heading character_name'><strong>"+ char_name + "</strong></span>" +
-                                            "<p class='list-group-item-text player_name'>" + play_name + "</p></a>");
-                } else {
-                    var id = $("#modal_player_id").val();
-                    console.log("id :" + id);
-                    $("#"+id).children(".character_name").html("<strong>" + char_name + "</strong>");
-                    $("#"+id).children(".player_name").text(play_name);
-                }
-
-                $("#modal-add-player").modal("hide");
-            });
-
-            /** SCNENE **/
-            $(document).on("click", "#btn-add-scene", function(){
-                $("#input_scene_name").val("");
-                $("#input_scene_desc").val("");
-                $("#modal_scene_id").val("");
-                $("#modal_add_scene_type").val("new");
-                $("#modal-add-scene").modal();
-            });
-
-            $('#modal-add-scene').on('shown.bs.modal', function () {
-                $("#input_scene_name").focus()
-            })
-            
-
-            $(document).on("dblclick", ".scene_list", function(){
-                var char_name = $(this).children(".scene_name").text();
-                console.log("scene = " + char_name);
-                $("#input_scene_name").val(char_name);
-                var play_name = $(this).children(".scene_desc").text();
-                console.log("desc = " + play_name)
-                $("#input_scene_desc").val(play_name);
-                $("#modal_scene_id").val($(this).attr("id"));
-                console.log("id: " + $("#modal_scene_id").val());
-                $("#modal_add_scene_type").val("edit");
-                $("#modal-add-scene").modal();
-            });
-
-            $(document).on("click", "#modal-add-scene-save", function(){
-                var char_name = $("#input_scene_name").val();
-                console.log("name = " + char_name);
-                var play_name = $("#input_scene_desc").val();
-                console.log("desc = " + play_name)
-
-                var action = $("#modal_add_scene_type").val();
-                console.log("scene modal: " + action);
-                if(action == "new"){
-                    $("#scene_list_div").append("<a href='#' class='list-group-item list-group-item-action scene_list' id='" +  char_name + "'>" +
-                                            "<span class='list-group-item-heading scene_name'><strong>"+ char_name + "</strong></span>" +
-                                            "<p class='list-group-item-text scene_desc'>" + play_name + "</p></a>");
-                } else {
-                    var id = $("#modal_scene_id").val();
-                    console.log("id :" + id);
-                    $("#"+id).children(".scene_name").html("<strong>" + char_name + "</strong>");
-                    $("#"+id).children(".scene_desc").text(play_name);
-                }
-
-                $("#modal-add-scene").modal("hide");
+            $(document).on("click", "#modal-add-item-to-repo", function(){
+                console.log("adding: " + $("#input_item_name").val())
+                var id = $("#modal_add_repo_name").val();
+                console.log("id" + id);
+                $("#repo_list_div_"+id).append('<a href="#" class="list-group-item list-group-item-action scene_list" id="enemy3">'+
+                                                '<p><strong> ADDED NEW ENEMY </strong></p>' + 
+                                                '</row></row></a>');
+                $("#modal-add-repo-item").modal("hide");
             });
 
             /*** Counting description chars **/
-            $('#input_scene_desc').keydown(function(){
-                var text_length = $('#input_scene_desc').val().length;
+            $('#input_item_desc').keydown(function(){
+                var text_length = $('#input_item_desc').val().length;
 
-                $('#characters').html(text_length + "/100");
+                $('#characters').html(text_length + "/500");
             });  
 
         });

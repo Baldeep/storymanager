@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'storymanager/style.css' %}" />
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Optional theme 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
+
+
+        <title>Repository</title>
+    </head>
+
+    <!-- Purple 660DBA
+         Darker Purple 58009B -->
+    <body style="padding-top:35px; padding-right: 30px; padding-left: 30px">
+        <div class="navbar-fixed-top" style="background-color : #58009B; border-color: #000">
+            <div id="navigation" class="navbar" 
+                style="background-color: #660DBA; border-color: #660DBA;margin-bottom: 2px">
+                <div class="container-fluid">
+                    <div class="row" style="margin-top: 5px;">
+                        <div class="col-sm-12">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >ScrollMaster</a>
+                            </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav">
+                                        <li>
+                                            <a href="/gmgm/home/" style="color:#fff">Home</a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                                                aria-haspopup="true" aria-expanded="false" style="color:#fff">Stories<span class="caret"></span></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="/gmgm/mission_1">My First Story</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="/gmgm/mission_1" id="1">My First Mission</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="2">Mission 2</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="3">Mission 3</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <button class="btn btn-default glyphicon glyphicon-export pull-right" style="margin-top: 10px; margin-right:5px"></button>
+                                    <button class="btn btn-default glyphicon glyphicon-import pull-right" style="margin-top: 10px; margin-right:5px"></button>
+                                    <button class="btn btn-warning pull-right" style="margin-top: 10px; margin-right:5px">
+                                                                    Rulebook&nbsp;<span class="glyphicon glyphicon-book"></span></button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+        	<div class="row" style="margin-top:40px">
+                <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default"> 
+                        <div class="panel-heading" style="height:50px">
+                            <span  class="h4" style="margin-top:150px">Welcome To ScrollMaster! </span>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="list-group" id="player_list_div" style="overflow-y:auto">
+                                <div >
+                                    <p>Tired of carrying notes to each of your sessions? Having difficulty keeping track of initiatives and turns? Keep losing that one sheet of notes you really needed to act out a character? Well, ScrollMaster is the software for you! ScrollMaster manages all of the tedious notes that you need for GMing and lets you access them quickly and easily, while still letting your players roll their own dice and manage their own character sheets!</p>
+                                    <p class="list-group-item-text player_name">You can create a new story by pressing the "<span class="glyphicon glyphicon-plus"></span>" button. Or you can click an existing story to get started!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9" style="padding-right: 7px; padding-left: 7px">
+                    <div class="panel panel-default"> 
+                        <div class="panel-heading" style="height:50px">
+                            <span style="margin-top:100px">Your Stories </span>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right" id="btn-add-story"></button>
+                        </div>
+                        <div class="panel-body">
+                            <div class="list-group" id="player_list_div" style="overflow-y:auto">
+                                <div class="list-group-item list-group-item-action player_list">
+                                    <div style="background-image: {% static 'storymanager/village.jpg' %}">
+                                        <span class="h3">Name: My First story</span>
+                                        <button class="btn btn-danger glyphicon glyphicon-remove pull-right" style="margin:5px"></button>
+                                        <button class="btn btn-default glyphicon glyphicon-pencil pull-right" style="margin:5px"></button>
+                                        <a class="btn btn-primary glyphicon glyphicon-folder-open pull-right" style="margin:5px" href="/gmgm/mission_1/"></a>
+                                    </div>
+                                    <div>
+                                        <small><span class="">Created: 12:34 01/12/2016</span></small>
+                                    </div>
+                                    <div>
+                                        <span class=""><p>A short sample story for demo purposes.</p></span>
+                                    </div>
+                                    <div>
+                                        <span class="">Rulebook:&nbsp;</span><input type="text" maxlength="100" style="width:200px" value="rulebook.pdf">&nbsp;<button>Browse</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="modal-add-repo-item">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Item in "<span class="repo-name"></span>"</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="input" id="modal_add_repo_type" class="hidden">
+                                <input type="input" id="modal_add_repo_name" class="hidden">
+                                <div class="row form-inline">
+                                    <div class="col-sm-3">
+                                        <span for="input_label_item_name"><strong>Name:</strong></span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" maxlength="50" autofocus id="input_item_name">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row form-inline">
+                                    <div class="col-sm-3">
+                                        <span for="input_character_name"><strong>Notes:</strong></span>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <textarea type="text" class="form-control" maxlength="500" id="input_item_desc"></textarea>
+                                        <br>
+                                        <small><span id="characters">0/500</span></small>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="modal-add-item-to-repo">Save</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+    </body>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+
+            
+
+            /*** Counting description chars **/
+            $('#input_item_desc').keydown(function(){
+                var text_length = $('#input_item_desc').val().length;
+
+                $('#characters').html(text_length + "/500");
+            });  
+
+        });
+    </script>
+</html>

@@ -3,6 +3,10 @@
 
 <html>
     <head>
+
+        <!-- Custom stylesheet -->
+        <link rel="stylesheet" type="text/css" href="{% static 'storymanager/style.css' %}" />
+
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 
@@ -10,9 +14,6 @@
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -33,36 +34,39 @@
                     <div class="row" style="margin-top: 5px;">
                         <div class="col-sm-12">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >GMGM</a>
+                                <a class="navbar-brand" href="#" style="color:#FFFFFF;" >ScrollMaster</a>
                             </div>
                             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav">
                                         <li>
-                                            <a href="#" style="color:#fff">Home</a>
-                                        </li>
-                                        <li>
-                                            <a href="/gmgm/repo/" style="color:#fff">Repositories</a>
+                                            <a href="/gmgm/home/" style="color:#fff">Home</a>
                                         </li>
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                                                aria-haspopup="true" aria-expanded="false" style="color:#fff">Sessions<span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a href="#" id="1">Mission 1</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" id="2">Mission 2</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" id="3">Mission 3</a>
-                                                </li>
-                                                <li role="separator" class="divider"></li>
-                                                <li>
-                                                    <a href="#" id="3" class="btn-success" style="color:#fff">Add  <span class="glyphicon glyphicon-plus"></span></a>
+                                                aria-haspopup="true" aria-expanded="false" style="color:#fff">Stories<span class="caret"></span></a>
+                                            <ul class="dropdown-menu multi-level" role="menu">
+                                                <li class="dropdown-submenu">
+                                                    <a tabindex="-1" href="/gmgm/mission_1">My First Story</a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="/gmgm/mission_1" id="1">My First Mission</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="2">Mission 2</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#" id="3">Mission 3</a>
+                                                        </li>
+                                                    </ul>
                                                 </li>
                                             </ul>
                                         </li>
+                                        <li>
+                                        <a href="/gmgm/repo/" style="color:#fff">Repos</a>
+                                        </li>
                                     </ul>
+                                    <button class="btn btn-warning pull-right" style="margin-top: 10px; margin-right:5px">
+                                                                    Rulebook&nbsp;<span class="glyphicon glyphicon-file"></span></button>
                                 </div>
                         </div>
                     </div>
@@ -70,30 +74,39 @@
             </div>
         </div>
 
+        <ol class="breadcrumb" style="margin-top: 23px; margin-left: 0px; margin-left: 0px">
+            <li class="breadcrumb-item active">My First Story</li> 
+            <li class="breadcrumb-item active">My First Mission</li>  
+        </ol>
+    
        
-        	<div class="row" style="margin-top:40px">
+        	<div class="row" style="margin-top:5px">
                 <div class="col-sm-3" style="padding-right: 7px; padding-left: 7px">
                     <div class="panel panel-default"> 
                         <div class="panel-heading" style="height:50px">
                             <span style="margin-top:100px">Players List </span>
-                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right" id="btn-add-player"></button>
                         </div>
                         <div class="panel-body">
                             <div class="list-group" id="player_list_div" style="overflow-y:auto">
                                 <a href="#" class="list-group-item list-group-item-action player_list" id="player1">
                                     <span class="list-group-item-heading character_name"><strong>Marlock the Magician</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-player"></button>
                                     <p class="list-group-item-text player_name">Michael</p>
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action player_list" id="player2">
                                     <span class="list-group-item-heading character_name"><strong>Barbus the Barbarian</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-player"></button>
                                     <p class="list-group-item-text player_name">Betty</p>
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action player_list" id="player3">
                                     <span class="list-group-item-heading character_name"><strong>Winfred the Warrior</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-player"></button>
                                     <p class="list-group-item-text player_name">Walter</p>
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action player_list" id="player4">
                                     <span class="list-group-item-heading character_name"><strong>Paul the Paladin</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-player"></button>
                                     <p class="list-group-item-text player_name">Paul</p>
                                 </a>
                             </div>
@@ -103,7 +116,7 @@
                 <div class="col-sm-6" style="padding-right: 8px; padding-left: 8px">
                     <div class="panel panel-default">
                         <div class="panel-heading" style="height:50px">
-                            <span style="margin-top:100px">Story Flowchart </span>
+                            <span style="margin-top:100px">My First Mission</span>
                             <button class="btn btn-primary glyphicon glyphicon-floppy-disk pull-right" id="btn-save"></button>
                         </div>
                         <div class="panel-body">
@@ -122,20 +135,23 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" style="height:50px">
                             <span style="margin-top:100px">Scenes </span>
-                            <button class="btn btn-success glyphicon glyphicon-plus pull-right" id="btn-add-scene"></button>
+                            <button class="btn btn-info glyphicon glyphicon-plus pull-right" id="btn-add-scene"></button>
                         </div>
                         <div class="panel-body">
                             <div class="list-group" id="scene_list_div" style="overflow-y:auto">
-                                <a href="#" class="list-group-item list-group-item-action scene_list" id="scene1">
+                                <a href="scene_1/" class="list-group-item list-group-item-action scene_list" id="scene1">
                                     <span class="list-group-item-heading scene_name"><strong>Scene 1</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-scene"></button>
                                     <p class="list-group-item-text scene_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque metus.</p>
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action scene_list" id="scene2">
                                     <span class="list-group-item-heading scene_name"><strong>Bandit Scene</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-scene"></button>
                                     <p class="list-group-item-text scene_desc">The gang gets attacked by a band of bandits who are harassing a local witch.</p>
                                 </a>
                                 <a href="#" class="list-group-item list-group-item-action scene_list" id="scene3">
                                     <span class="list-group-item-heading scene_name"><strong>Vicky The Witch</strong></span>
+                                    <button class="btn btn-default glyphicon glyphicon-pencil pull-right btn-edit-scene"></button>
                                     <p class="list-group-item-text scene_desc">Meeting a lovely old lady in the forest.</p>
                                 </a>
                             </div>
@@ -178,6 +194,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="modal-add-player-save">Save</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" id="modal-add-player-remove">Remove</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -188,7 +205,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Add a player</h4>
+                            <h4 class="modal-title">Scene</h4>
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
@@ -208,7 +225,7 @@
                                         <span for="input_character_name"><strong>Description:</strong></span>
                                     </div>
                                     <div class="col-sm-9">
-                                        <textarea type="text" class="form-control" maxlength="100" id="input_scene_desc"></textarea>
+                                        <textarea type="text" class="form-control" maxlength="100" id="input_scene_desc" style="width:100%"></textarea>
                                         <br>
                                         <small><span id="characters">0/100</span></small>
                                         
@@ -219,6 +236,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="modal-add-scene-save">Save</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-danger" id="modal-add-scene-remove">Remove</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -269,14 +287,14 @@
             })
             
 
-            $(document).on("dblclick", ".player_list", function(){
-                var char_name = $(this).children(".character_name").text();
+            $(document).on("click", ".btn-edit-player", function(){
+                var char_name = $(this).parent("a").children(".character_name").text();
                 console.log("name = " + char_name);
                 $("#input_character_name").val(char_name);
-                var play_name = $(this).children(".player_name").text();
+                var play_name = $(this).parent("a").children(".player_name").text();
                 console.log("player = " + play_name)
                 $("#input_player_name").val(play_name);
-                $("#modal_player_id").val($(this).attr("id"));
+                $("#modal_player_id").val($(this).parent("a").attr("id"));
                 console.log("id: " + $("#modal_player_id").val());
                 $("#modal_add__type").val("edit");
                 $("#modal-add-player").modal();
@@ -318,14 +336,15 @@
             })
             
 
-            $(document).on("dblclick", ".scene_list", function(){
-                var char_name = $(this).children(".scene_name").text();
+            $(document).on("click", ".btn-edit-scene", function(){
+                event.preventDefault();
+                var char_name = $(this).parent("a").children(".scene_name").text();
                 console.log("scene = " + char_name);
                 $("#input_scene_name").val(char_name);
-                var play_name = $(this).children(".scene_desc").text();
-                console.log("desc = " + play_name)
+                var play_name = $(this).parent("a").children(".scene_desc").text();
+                console.log("desc = " + play_name);
                 $("#input_scene_desc").val(play_name);
-                $("#modal_scene_id").val($(this).attr("id"));
+                $("#modal_scene_id").val($(this).parent("a").attr("id"));
                 console.log("id: " + $("#modal_scene_id").val());
                 $("#modal_add_scene_type").val("edit");
                 $("#modal-add-scene").modal();
@@ -351,6 +370,20 @@
                 }
 
                 $("#modal-add-scene").modal("hide");
+            });
+
+            $(document).on("click", "#modal-add-scene-remove", function(){
+                var id = $("#modal_scene_id").val();
+                console.log("id :" + id);
+                $("#"+id).addClass("hidden");
+                $("#modal-add-scene").modal("hide");
+            })
+
+            $(document).on("click", "#modal-add-player-remove", function(){
+                var id = $("#modal_player_id").val();
+                console.log("id :" + id);
+                $("#"+id).addClass("hidden");
+                $("#modal-add-player").modal("hide");
             });
 
             /*** Counting description chars **/
